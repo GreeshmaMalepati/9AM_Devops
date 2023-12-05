@@ -1,0 +1,18 @@
+pipeline{
+  agent any
+  stages{
+    stage('build'){
+      steps{
+        sh 'echo "Build from Github"'
+      }
+    }
+    stage('test'){
+      steps{
+        sh '''
+         echo "Build from Github running on `hostname`"
+         bash ${WORKSPACE}/linux/script.sh
+         '''
+      }
+    }
+  }
+}
